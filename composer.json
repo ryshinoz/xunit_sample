@@ -1,0 +1,18 @@
+{
+    "repositories": [
+        {
+          "type": "pear",
+          "url": "http://pear.symfony-project.com"
+        },
+        {
+          "type": "pear",
+          "url": "http://pear.phpunit.de"
+        }
+    ],
+    "require": {
+          "phpunit/phpunit": ">= 3.7.0" 
+    },
+    "config": {
+        "bin-dir" : "bin/"
+    }   
+}
