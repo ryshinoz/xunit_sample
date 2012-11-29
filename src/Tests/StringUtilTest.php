@@ -24,4 +24,14 @@ class StringUtilTest extends PHPUnit_Framework_TestCase
         $text = 'Hello World!';
         $this->assertThat(StringUtil::reverse($text), $this->equalTo('!dlroW olleH'));
     }
+
+    /**
+     * @test
+     */
+    public function testReverse_Multibyte()
+    {
+        // 現在の実装のままだとテストが通らない
+        $text = 'テスト';
+        $this->assertThat(StringUtil::reverse($text), $this->equalTo('トステ'));
+    }
 }
