@@ -2,3 +2,5 @@ vendor
 bin
 composer.lock
 composer.phar
+.DS_Store
+report
