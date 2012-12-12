@@ -1,13 +1,13 @@
 <?php
-class BowlingTest extends PHPUnit_Framework_TestCase
+class Bowling2Test extends PHPUnit_Framework_TestCase
 {
     /**
      * @test
      */
     public function testRoll()
     {
-        $dateTime = new DateTime();
-        $bowling = new Bowling($dateTime);
+        $calendar = new Calendar();
+        $bowling = new Bowling2($calendar);
 
         for ($i = 0; $i < 50; $i++) {
             $score = $bowling->roll();
@@ -24,7 +24,8 @@ class BowlingTest extends PHPUnit_Framework_TestCase
     {
         // 火曜日
         $dateTime = new DateTime('2012-12-11');
-        $bowling = new Bowling($dateTime);
+        $calendar = new Calendar($dateTime);
+        $bowling = new Bowling2($calendar);
 
         for ($i = 0; $i < 100; $i++) {
             $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL)));
@@ -38,7 +39,8 @@ class BowlingTest extends PHPUnit_Framework_TestCase
     {
         // 水曜日
         $dateTime = new DateTime('2012-12-12');
-        $bowling = new Bowling($dateTime);
+        $calendar = new Calendar($dateTime);
+        $bowling = new Bowling2($calendar);
 
         for ($i = 0; $i < 100; $i++) {
             $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL + 10)));
@@ -50,10 +52,15 @@ class BowlingTest extends PHPUnit_Framework_TestCase
      */
     public function testHyperRollNonWednesdayWithMock()
     {
-        $bowlingMock = $this->getMock('Bowling', array('getDateTime'), array(new DateTime('2012-12-11')));
+        $calendar = $this->getMock('Calendar');
+        $calendar->expects($this->any())
+            ->method('isWednesday')
+            ->will($this->returnValue(false));
+
+        $bowling = new Bowling2($calendar);
 
         for ($i = 0; $i < 100; $i++) {
-            $this->assertThat($bowlingMock->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL)));
+            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL)));
         }
     }
 
@@ -62,10 +69,15 @@ class BowlingTest extends PHPUnit_Framework_TestCase
      */
     public function testHyperRollWednesdayWithMock()
     {
-        $bowlingMock = $this->getMock('Bowling', array('getDateTime'), array(new DateTime('2012-12-11')));
+        $calendar = $this->getMock('Calendar');
+        $calendar->expects($this->any())
+            ->method('isWednesday')
+            ->will($this->returnValue(true));
+
+        $bowling = new Bowling2($calendar);
 
         for ($i = 0; $i < 100; $i++) {
-            $this->assertThat($bowlingMock->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL + 10)));
+            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL + 10)));
         }
     }
 }
