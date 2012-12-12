@@ -1,7 +1,7 @@
 <?php
 class Calendar
 {
-    const WEDNESDAY = 'Wed';
+    const WEDNESDAY = 3;
 
     private $_dateTime;
 
@@ -17,9 +17,6 @@ class Calendar
 
     public function isWednesday()
     {
-        if ($this->_dateTime->format('D') == self::WEDNESDAY) {
-            return true; 
-        }
-        return false; 
+        return $this->_dateTime->format('w') == self::WEDNESDAY;
     }
 }
