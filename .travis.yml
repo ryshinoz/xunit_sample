@@ -1,0 +1,14 @@
+language: php
+
+# PHPバージョン指定
+php:
+    - 5.3
+
+# PECL
+before_script:
+
+# PHPUnit
+script: phpunit
+
+# http://about.travis-ci.org/docs/user/languages/php/
+# http://about.travis-ci.org/docs/user/ci-environment/
