@@ -1,13 +1,14 @@
 <?php
-class Bowling
+class BowlingDateTime
 {
     const MAX_PINS_PER_ROLL = 10;
     const WEDNESDAY = 3;
 
     private $_dateTime;
 
-    public function __construct()
+    public function __construct(DateTime $dateTime)
     {
+        $this->_dateTime = $dateTime;
     }
 
     public function roll()
@@ -19,10 +20,15 @@ class Bowling
     {
         $score = $this->roll();
 
-        $dateTime = new DateTime();
-        if ($dateTime->format('w') == self::WEDNESDAY) {
+        if ($this->getDateTime()->format('w') == self::WEDNESDAY) {
             $score += 10;
         }
+
         return $score;
+    }
+
+    private function getDateTime()
+    {
+        return $this->_dateTime;
     }
 }

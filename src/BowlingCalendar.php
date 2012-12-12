@@ -1,5 +1,5 @@
 <?php
-class Bowling2
+class BowlingCalendar
 {
     const MAX_PINS_PER_ROLL = 10;
 
