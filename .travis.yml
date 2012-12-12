@@ -8,7 +8,7 @@ php:
 #before_script:
 
 # PHPUnit
-script: phpunit
+script: phpunit -f phpunit.xml
 
 # http://about.travis-ci.org/docs/user/languages/php/
 # http://about.travis-ci.org/docs/user/ci-environment/
