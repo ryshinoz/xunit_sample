@@ -41,7 +41,8 @@ class BowlingDateTimeDateTimeTest extends PHPUnit_Framework_TestCase
         $bowling = new BowlingDateTime($dateTime);
 
         for ($i = 0; $i < 100; $i++) {
-            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(BowlingDateTime::MAX_PINS_PER_ROLL + 10)));
+            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(10), $this->lessThanOrEqual(BowlingDateTime::MAX_PINS_PER_ROLL + 10)));
+
         }
     }
 
@@ -65,7 +66,7 @@ class BowlingDateTimeDateTimeTest extends PHPUnit_Framework_TestCase
         $bowlingMock = $this->getMock('BowlingDateTime', array('getDateTime'), array(new DateTime('2012-12-11')));
 
         for ($i = 0; $i < 100; $i++) {
-            $this->assertThat($bowlingMock->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(BowlingDateTime::MAX_PINS_PER_ROLL + 10)));
+            $this->assertThat($bowlingMock->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(10), $this->lessThanOrEqual(BowlingDateTime::MAX_PINS_PER_ROLL + 10)));
         }
     }
 }

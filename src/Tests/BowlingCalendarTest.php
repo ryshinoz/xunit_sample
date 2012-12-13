@@ -43,7 +43,7 @@ class BowlingCalendarTest extends PHPUnit_Framework_TestCase
         $bowling = new BowlingCalendar($calendar);
 
         for ($i = 0; $i < 100; $i++) {
-            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL + 10)));
+            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(10), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL + 10)));
         }
     }
 
@@ -77,7 +77,7 @@ class BowlingCalendarTest extends PHPUnit_Framework_TestCase
         $bowling = new BowlingCalendar($calendar);
 
         for ($i = 0; $i < 100; $i++) {
-            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(0), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL + 10)));
+            $this->assertThat($bowling->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(10), $this->lessThanOrEqual(Bowling::MAX_PINS_PER_ROLL + 10)));
         }
     }
 }
