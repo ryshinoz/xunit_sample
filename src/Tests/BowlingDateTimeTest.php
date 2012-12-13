@@ -63,7 +63,7 @@ class BowlingDateTimeDateTimeTest extends PHPUnit_Framework_TestCase
      */
     public function testHyperRollWednesdayWithMock()
     {
-        $bowlingMock = $this->getMock('BowlingDateTime', array('getDateTime'), array(new DateTime('2012-12-11')));
+        $bowlingMock = $this->getMock('BowlingDateTime', array('getDateTime'), array(new DateTime('2012-12-12')));
 
         for ($i = 0; $i < 100; $i++) {
             $this->assertThat($bowlingMock->hyperRoll(), $this->logicalAnd($this->greaterThanOrEqual(10), $this->lessThanOrEqual(BowlingDateTime::MAX_PINS_PER_ROLL + 10)));
